@@ -30,7 +30,7 @@ export const defaultLink: LinkContent = {
   props: {
     text: "Click here",
     href: "https://google.dk",
-    bgcolor: "#ef4444",
+    bgcolor: "#d21b1b",
     color: "#fff",
   },
 };

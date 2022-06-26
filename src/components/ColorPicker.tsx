@@ -9,7 +9,7 @@ interface IColorPickerProps {
 }
 
 const colors: HexColor[] = [
-  "#ef4444",
+  "#d21b1b",
   "#44bcef",
   "#44ef8b",
   "#fff",
