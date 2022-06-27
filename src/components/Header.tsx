@@ -8,7 +8,7 @@ export const Header: FC = () => {
 
   return (
     <header className="py-4 shadow-md">
-      <div className="max-w-[1200px] mx-auto flex items-center">
+      <div className="max-w-[1224px] mx-auto flex items-center px-6">
         <h1 className="font-bold text-2xl">React CMS</h1>
         <button
           onClick={() => {
