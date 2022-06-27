@@ -37,7 +37,7 @@ export const ColorPicker: FC<IColorPickerProps> = ({
         <li
           tabIndex={0}
           key={color}
-          className={`w-10 h-10 rounded-full transition-opacity cursor-pointer border-2 border-solid border-[#e7eae9] ${
+          className={`w-10 h-10 rounded-full transition-opacity cursor-pointer border-2 border-solid border-[#e7eae9] hover:opacity-100 ${
             color === currentColor ? "opacity-100" : "opacity-20"
           }`}
           onClick={() => onSelectColor(color)}
