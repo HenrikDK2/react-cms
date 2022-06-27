@@ -4,7 +4,7 @@ import { IoClose, IoList } from "react-icons/io5";
 import { EditLink } from "./Link";
 import { EditHeading } from "./Heading";
 import { Content } from "../types/content";
-import { closeMenu } from "../redux/slices/menuSlice";
+import { closeMenu } from "../redux/slices/adminSlice";
 import { EditProductList } from "./ProductList";
 import { BiLink, BiHeading } from "react-icons/bi";
 import {
@@ -32,7 +32,7 @@ const RenderEditableContent: FC<IRenderProps> = ({ currentType }) => {
 export const EditMenu: FC = () => {
   const dispatch = useAppDispatch();
   const data = useAppSelector((state) => state.content.data);
-  const { editContentIndex, isOpen } = useAppSelector((state) => state.menu);
+  const { editContentIndex, isOpen } = useAppSelector((state) => state.admin);
   const handleKeyDown = (e: KeyboardEvent<HTMLElement>) => {
     if (e.key === "Escape") dispatch(closeMenu());
   };

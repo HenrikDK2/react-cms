@@ -45,7 +45,7 @@ export const ProductList: FC<IProductListProps & Index> = ({
 export const EditProductList: FC = () => {
   const dispatch = useAppDispatch();
   const { data } = useAppSelector((state) => state.content);
-  const { editContentIndex } = useAppSelector((state) => state.menu);
+  const { editContentIndex } = useAppSelector((state) => state.admin);
   const content = getContent(data, editContentIndex) as ProductListContent;
 
   if (content.type === "productList" && typeof editContentIndex === "number") {

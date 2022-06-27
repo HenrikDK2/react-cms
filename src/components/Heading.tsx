@@ -26,7 +26,7 @@ export const Heading: FC<IHeadingProps & Index> = ({ text, index, color }) => {
 
 export const EditHeading: FC = () => {
   const { data } = useAppSelector((state) => state.content);
-  const { editContentIndex } = useAppSelector((state) => state.menu);
+  const { editContentIndex } = useAppSelector((state) => state.admin);
   const content = getContent(data, editContentIndex);
   const dispatch = useAppDispatch();
   if (content.type === "heading") {

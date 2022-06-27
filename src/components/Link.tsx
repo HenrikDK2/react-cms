@@ -37,7 +37,7 @@ export const Button: FC<ILinkProps & Index> = ({
 
 export const EditLink: FC = () => {
   const { data } = useAppSelector((state) => state.content);
-  const { editContentIndex } = useAppSelector((state) => state.menu);
+  const { editContentIndex } = useAppSelector((state) => state.admin);
   const content = getContent(data, editContentIndex) as LinkContent;
   const dispatch = useAppDispatch();
 

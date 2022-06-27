@@ -6,12 +6,12 @@ import {
 } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import contentSlice from "./slices/contentSlice";
-import menuSlice from "./slices/menuSlice";
+import adminSlice from "./slices/adminSlice";
 
 export const store = configureStore({
   reducer: {
     content: contentSlice,
-    menu: menuSlice,
+    admin: adminSlice,
   },
 });
 

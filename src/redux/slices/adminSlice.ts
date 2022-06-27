@@ -3,18 +3,26 @@ import { EditContentIndex } from "../../types/content";
 
 interface InitialState {
   editContentIndex: EditContentIndex;
-  isOpen: Boolean;
+  isOpen: boolean;
+  adminMode: boolean;
 }
 
 const initalState: InitialState = {
   editContentIndex: null,
   isOpen: false,
+  adminMode: false,
 };
 
 export const menuSlice = createSlice({
-  name: "menu",
+  name: "admin",
   initialState: initalState,
   reducers: {
+    enableAdminMode(state) {
+      state.adminMode = true;
+    },
+    disableAdminMode(state) {
+      state.adminMode = false;
+    },
     openMenu(state) {
       state.isOpen = true;
     },
@@ -27,6 +35,12 @@ export const menuSlice = createSlice({
   },
 });
 
-export const { openMenu, closeMenu, setEditContentIndex } = menuSlice.actions;
+export const {
+  openMenu,
+  enableAdminMode,
+  disableAdminMode,
+  closeMenu,
+  setEditContentIndex,
+} = menuSlice.actions;
 
 export default menuSlice.reducer;

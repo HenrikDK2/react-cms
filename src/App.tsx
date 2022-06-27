@@ -6,11 +6,10 @@ import { useAppSelector } from "./redux/store";
 import { Header } from "./components/Header";
 import { ProductList } from "./components/ProductList";
 
-const isAdminPage = window.location.pathname === "/admin";
-
 function App() {
   const contentData = useAppSelector((state) => state.content.data);
-
+  const adminMode = useAppSelector((state) => state.admin.adminMode);
+  console.log(adminMode);
   return (
     <>
       <Header />
@@ -27,7 +26,7 @@ function App() {
               );
           }
         })}
-        {isAdminPage && <EditMenu />}
+        {adminMode && <EditMenu />}
       </main>
     </>
   );
