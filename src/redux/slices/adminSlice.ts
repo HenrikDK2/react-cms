@@ -29,7 +29,7 @@ export const menuSlice = createSlice({
     closeMenu(state) {
       state.isOpen = false;
     },
-    setEditContentIndex(state, action: PayloadAction<number>) {
+    setEditContentIndex(state, action: PayloadAction<number | null>) {
       state.editContentIndex = action.payload;
     },
   },

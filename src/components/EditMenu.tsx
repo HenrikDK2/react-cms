@@ -42,7 +42,7 @@ export const EditMenu: FC = () => {
       <aside
         aria-hidden={!isOpen}
         onKeyDown={handleKeyDown}
-        className={`fixed right-0 top-0 z-10 w-80 h-[100%] transition-all duration-700 bg-white shadow-lg ${
+        className={`fixed overflow-y-scroll pb-4 right-0 top-0 z-10 w-80 h-[100%] transition-all duration-700 bg-white shadow-lg ${
           isOpen ? "translate-x-0 opacity-100" : "translate-x-[100%] opacity-0"
         }`}
       >

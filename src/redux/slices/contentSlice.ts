@@ -12,7 +12,7 @@ const stateInStorage = (): ContentState | undefined => {
   }
 };
 
-const defaultProductItem = {
+export const defaultCardItem = {
   alt: "placeholder",
   text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat, voluptatibus minus odit ad similique exercitationem doloribus!",
   title: "Example title",
@@ -21,7 +21,7 @@ const defaultProductItem = {
 export const defaultCardList: CardListContent = {
   type: "cardList",
   props: {
-    items: [defaultProductItem, defaultProductItem, defaultProductItem],
+    items: [defaultCardItem, defaultCardItem, defaultCardItem],
   },
 };
 
@@ -61,7 +61,7 @@ export const contentArrSlice = createSlice({
       sessionStorage.setItem("contentState", JSON.stringify(state));
     },
     deleteContent: (state, action: PayloadAction<number>) => {
-      state.data.splice(action.payload, 1);
+      state.data = state.data.filter((_, i) => i !== action.payload);
       sessionStorage.setItem("contentState", JSON.stringify(state));
     },
     swapContent: (state, action: PayloadAction<[number, number]>) => {
@@ -72,7 +72,6 @@ export const contentArrSlice = createSlice({
     },
     updateDragItem: (state, action: PayloadAction<DragItem>) => {
       state.dragItem = action.payload;
-      sessionStorage.setItem("contentState", JSON.stringify(state));
     },
   },
 });

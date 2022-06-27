@@ -1,13 +1,18 @@
 import { FC } from "react";
 import placeholderImage from "../images/placeholder.gif";
-import { updateContent } from "../redux/slices/contentSlice";
+import { closeMenu, setEditContentIndex } from "../redux/slices/adminSlice";
+import {
+  defaultCardItem,
+  updateContent,
+  deleteContent,
+} from "../redux/slices/contentSlice";
 import { useAppDispatch, useAppSelector } from "../redux/store";
 import { getContent } from "../utils";
 import { EditWrapper } from "./EditWrapper";
 import { Input } from "./Input";
 import { Textarea } from "./Textarea";
 
-export interface Item {
+export interface CardItem {
   src?: string;
   alt: string;
   text: string;
@@ -17,7 +22,7 @@ export interface Item {
 type Index = { index: number };
 
 export interface ICardListProps {
-  items: Item[];
+  items: CardItem[];
 }
 
 export interface CardListContent {
@@ -52,52 +57,79 @@ export const EditCardList: FC = () => {
   const content = getContent(data, editContentIndex) as CardListContent;
 
   if (content.type === "cardList" && typeof editContentIndex === "number") {
+    const handleOnChange = (
+      e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
+      i: number,
+      property: keyof CardItem
+    ) => {
+      let newContent: CardListContent = JSON.parse(JSON.stringify(content));
+      newContent.props.items[i][property] = e.currentTarget.value;
+
+      dispatch(
+        updateContent({
+          content: newContent,
+          index: editContentIndex,
+        })
+      );
+    };
+
+    const handleRemoveItem = () => {
+      if (content.props.items.length < 2) {
+        dispatch(deleteContent(editContentIndex));
+        dispatch(setEditContentIndex(null));
+        dispatch(closeMenu());
+      } else {
+        const newContent: CardListContent = JSON.parse(JSON.stringify(content));
+        newContent.props.items.pop();
+        dispatch(
+          updateContent({ content: newContent, index: editContentIndex })
+        );
+      }
+    };
+
+    const handleAddItem = () => {
+      const newContent: CardListContent = JSON.parse(JSON.stringify(content));
+      newContent.props.items.push(defaultCardItem);
+      dispatch(updateContent({ content: newContent, index: editContentIndex }));
+    };
+
     return (
-      <ul>
-        {content.props.items.map((item, i) => {
-          return (
+      <>
+        <ul>
+          {content.props.items.map((item, i) => (
             <li key={i}>
               <h3 className="font-bold text-lg my-2">{i + 1}. Item</h3>
               <Input
                 id={"title-" + i}
                 value={item.title}
                 label="Title"
-                onChange={(e) => {
-                  let newContent: CardListContent = JSON.parse(
-                    JSON.stringify(content)
-                  );
-                  newContent.props.items[i].title = e.currentTarget.value;
-
-                  dispatch(
-                    updateContent({
-                      content: newContent,
-                      index: editContentIndex,
-                    })
-                  );
-                }}
+                onChange={(e) => handleOnChange(e, i, "title")}
               />
               <Textarea
                 id={"text-" + i}
                 label="Content"
                 value={item.text}
-                onChange={(e) => {
-                  let newContent: CardListContent = JSON.parse(
-                    JSON.stringify(content)
-                  );
-                  newContent.props.items[i].text = e.currentTarget.value;
-
-                  dispatch(
-                    updateContent({
-                      content: newContent,
-                      index: editContentIndex,
-                    })
-                  );
-                }}
+                onChange={(e) => handleOnChange(e, i, "text")}
               />
             </li>
-          );
-        })}
-      </ul>
+          ))}
+        </ul>
+
+        <div className="flex justify-between items-center mt-6">
+          <button
+            onClick={handleRemoveItem}
+            className="bg-red-600 py-2 px-4 rounded-md text-white font-bold flex-1"
+          >
+            Remove
+          </button>
+          <button
+            onClick={handleAddItem}
+            className="bg-green-600 py-2 px-4 rounded-md text-white font-bold flex-1 ml-4"
+          >
+            Add
+          </button>
+        </div>
+      </>
     );
   }
   return null;
