@@ -1,8 +1,8 @@
 import { LinkContent } from "../components/Link";
 import { HeadingContent } from "../components/Heading";
-import { ProductListContent } from "../components/ProductList";
+import { CardListContent } from "../components/CardList";
 
-export type Content = LinkContent | HeadingContent | ProductListContent;
+export type Content = LinkContent | HeadingContent | CardListContent;
 export type ContentArr = Array<Content>;
 export type EditContentIndex = number | null;
 export type DragItem = number | null;

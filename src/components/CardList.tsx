@@ -16,19 +16,16 @@ export interface Item {
 
 type Index = { index: number };
 
-export interface IProductListProps {
+export interface ICardListProps {
   items: Item[];
 }
 
-export interface ProductListContent {
-  type: "productList";
-  props: IProductListProps;
+export interface CardListContent {
+  type: "cardList";
+  props: ICardListProps;
 }
 
-export const ProductList: FC<IProductListProps & Index> = ({
-  items,
-  index,
-}) => (
+export const CardList: FC<ICardListProps & Index> = ({ items, index }) => (
   <EditWrapper index={index}>
     <ul className="flex justify-between my-8">
       {items.map(({ alt, src, title, text }, i) => (
@@ -46,25 +43,25 @@ export const ProductList: FC<IProductListProps & Index> = ({
   </EditWrapper>
 );
 
-export const EditProductList: FC = () => {
+export const EditCardList: FC = () => {
   const dispatch = useAppDispatch();
   const { data } = useAppSelector((state) => state.content);
   const { editContentIndex } = useAppSelector((state) => state.admin);
-  const content = getContent(data, editContentIndex) as ProductListContent;
+  const content = getContent(data, editContentIndex) as CardListContent;
 
-  if (content.type === "productList" && typeof editContentIndex === "number") {
+  if (content.type === "cardList" && typeof editContentIndex === "number") {
     return (
       <ul>
         {content.props.items.map((item, i) => {
           return (
             <li key={i}>
-              <h3 className="font-bold text-lg my-2">{i + 1}. Product</h3>
+              <h3 className="font-bold text-lg my-2">{i + 1}. Item</h3>
               <Input
                 id={"title-" + i}
                 value={item.title}
                 label="Title"
                 onChange={(e) => {
-                  let newContent: ProductListContent = JSON.parse(
+                  let newContent: CardListContent = JSON.parse(
                     JSON.stringify(content)
                   );
                   newContent.props.items[i].title = e.currentTarget.value;
@@ -82,7 +79,7 @@ export const EditProductList: FC = () => {
                 label="Content"
                 value={item.text}
                 onChange={(e) => {
-                  let newContent: ProductListContent = JSON.parse(
+                  let newContent: CardListContent = JSON.parse(
                     JSON.stringify(content)
                   );
                   newContent.props.items[i].text = e.currentTarget.value;

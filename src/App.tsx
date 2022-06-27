@@ -4,7 +4,7 @@ import { Heading } from "./components/Heading";
 import { EditMenu } from "./components/EditMenu";
 import { useAppSelector } from "./redux/store";
 import { Header } from "./components/Header";
-import { ProductList } from "./components/ProductList";
+import { CardList } from "./components/CardList";
 
 function App() {
   const contentData = useAppSelector((state) => state.content.data);
@@ -20,10 +20,8 @@ function App() {
               return <Button index={index} key={index} {...content.props} />;
             case "heading":
               return <Heading index={index} key={index} {...content.props} />;
-            case "productList":
-              return (
-                <ProductList index={index} key={index} {...content.props} />
-              );
+            case "cardList":
+              return <CardList index={index} key={index} {...content.props} />;
           }
         })}
         {adminMode && <EditMenu />}

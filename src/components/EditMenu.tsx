@@ -5,13 +5,13 @@ import { EditLink } from "./Link";
 import { EditHeading } from "./Heading";
 import { Content } from "../types/content";
 import { closeMenu } from "../redux/slices/adminSlice";
-import { EditProductList } from "./ProductList";
+import { EditCardList } from "./CardList";
 import { BiLink, BiHeading } from "react-icons/bi";
 import {
   addContent,
   defaultHeading,
   defaultLink,
-  defaultProductList,
+  defaultCardList,
 } from "../redux/slices/contentSlice";
 
 interface IRenderProps {
@@ -24,8 +24,8 @@ const RenderEditableContent: FC<IRenderProps> = ({ currentType }) => {
       return <EditLink />;
     case "heading":
       return <EditHeading />;
-    case "productList":
-      return <EditProductList />;
+    case "cardList":
+      return <EditCardList />;
   }
 };
 
@@ -76,8 +76,8 @@ export const EditMenu: FC = () => {
         </button>
         <button>
           <IoList
-            aria-label="Add product list"
-            onClick={() => dispatch(addContent(defaultProductList))}
+            aria-label="Add card list"
+            onClick={() => dispatch(addContent(defaultCardList))}
             size={40}
           />
         </button>

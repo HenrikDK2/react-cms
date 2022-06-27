@@ -2,7 +2,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { HeadingContent } from "../../components/Heading";
 import { LinkContent } from "../../components/Link";
-import { ProductListContent } from "../../components/ProductList";
+import { CardListContent } from "../../components/CardList";
 import { Content, ContentState, DragItem } from "../../types/content";
 
 const stateInStorage = (): ContentState | undefined => {
@@ -18,8 +18,8 @@ const defaultProductItem = {
   title: "Example title",
 };
 
-export const defaultProductList: ProductListContent = {
-  type: "productList",
+export const defaultCardList: CardListContent = {
+  type: "cardList",
   props: {
     items: [defaultProductItem, defaultProductItem, defaultProductItem],
   },
@@ -41,7 +41,7 @@ export const defaultHeading: HeadingContent = {
 };
 
 const initalState: ContentState = stateInStorage() || {
-  data: [defaultHeading, defaultProductList, defaultLink],
+  data: [defaultHeading, defaultCardList, defaultLink],
   dragItem: null,
 };
 
