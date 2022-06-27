@@ -79,6 +79,7 @@ export const EditProductList: FC = () => {
               />
               <Textarea
                 id={"text-" + i}
+                label="Content"
                 value={item.text}
                 onChange={(e) => {
                   let newContent: ProductListContent = JSON.parse(
