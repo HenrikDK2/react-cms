@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       <Header />
-      <main className="max-w-[1200px] m-auto pt-4">
+      <main className="max-w-[1200px] m-auto pt-4 mb-16">
         {contentData.map((content, index) => {
           switch (content.type) {
             case "link":
