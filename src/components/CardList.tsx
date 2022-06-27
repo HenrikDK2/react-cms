@@ -31,6 +31,8 @@ export const CardList: FC<ICardListProps & Index> = ({ items, index }) => (
       {items.map(({ alt, src, title, text }, i) => (
         <li key={i} className="w-[300px]">
           <img
+            width={300}
+            height={224}
             className="block min-h-[224px]"
             alt={alt}
             src={src || placeholderImage}

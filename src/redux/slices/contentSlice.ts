@@ -28,7 +28,7 @@ export const defaultCardList: CardListContent = {
 export const defaultLink: LinkContent = {
   type: "link",
   props: {
-    text: "Click here",
+    text: "Redirect to google.dk",
     href: "https://google.dk",
     bgcolor: "#d21b1b",
     color: "#fff",
