@@ -31,8 +31,8 @@ export const ProductList: FC<IProductListProps & Index> = ({
 }) => (
   <EditWrapper index={index}>
     <ul className="flex justify-between my-8">
-      {items.map(({ alt, src, title, text }) => (
-        <li className="w-[300px]">
+      {items.map(({ alt, src, title, text }, i) => (
+        <li key={i} className="w-[300px]">
           <img className="block" alt={alt} src={src || placeholderImage} />
           <h3 className="font-bold text-2xl mt-2">{title}</h3>
           <p>{text}</p>
