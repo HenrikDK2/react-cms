@@ -4,9 +4,10 @@ import { BiFont } from "react-icons/bi";
 import { useAppDispatch, useAppSelector } from "../redux/store";
 import { updateContentWithNewProps } from "../utils";
 import { HeadingContent } from "./Heading";
+import { LinkContent } from "./Link";
 
 interface IWeightPickerProps {
-  content: HeadingContent;
+  content: HeadingContent | LinkContent;
 }
 
 export const WeightPicker: FC<IWeightPickerProps> = ({ content }) => {

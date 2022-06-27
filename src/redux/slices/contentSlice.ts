@@ -29,6 +29,7 @@ export const defaultLink: LinkContent = {
   type: "link",
   props: {
     text: "Redirect to google.dk",
+    weight: "bold",
     href: "https://google.dk",
     bgcolor: "#d21b1b",
     color: "#fff",
