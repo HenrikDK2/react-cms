@@ -51,7 +51,7 @@ export const EditMenu: FC = () => {
           onClick={() => dispatch(closeMenu())}
           className="ml-auto block transition-colors hover:text-red-500"
         >
-          <IoClose size={40} />
+          <IoClose aria-label="Close edit menu" size={40} />
         </button>
         {typeof editContentIndex === "number" && (
           <form className="px-4 pt-2" onSubmit={(e) => e.preventDefault()}>

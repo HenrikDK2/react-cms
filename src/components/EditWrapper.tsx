@@ -58,7 +58,7 @@ export const EditWrapper: FC<IContainerProps> = ({ index, children }) => {
           }}
           className="absolute right-0 top-0 cursor-pointer"
         >
-          <FaRegEdit className="text-xl" />
+          <FaRegEdit aria-label="Open edit menu" className="text-xl" />
         </button>
         <button
           onClick={() => {
@@ -66,7 +66,7 @@ export const EditWrapper: FC<IContainerProps> = ({ index, children }) => {
           }}
           className="absolute right-6 top-0 cursor-pointer"
         >
-          <AiOutlineDelete className="text-xl" />
+          <AiOutlineDelete aria-label="Delete content" className="text-xl" />
         </button>
         <div className="w-[100%] select-none pointer-events-none">
           {children}
