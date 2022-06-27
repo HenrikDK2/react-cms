@@ -32,7 +32,7 @@ export interface CardListContent {
 
 export const CardList: FC<ICardListProps & Index> = ({ items, index }) => (
   <EditWrapper index={index}>
-    <ul className="flex flex-wrap gap-8 justify-center my-8 lg:justify-between">
+    <ul className="flex flex-wrap gap-16 justify-center my-8">
       {items.map(({ alt, src, title, text }, i) => (
         <li key={i} className="w-[300px]">
           <img
