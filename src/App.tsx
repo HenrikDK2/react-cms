@@ -15,7 +15,6 @@ function App() {
     <>
       <Header />
       <main className="max-w-[1200px] m-auto pt-4">
-        {isAdminPage && <EditMenu />}
         {contentData.map((content, index) => {
           switch (content.type) {
             case "link":
@@ -28,6 +27,7 @@ function App() {
               );
           }
         })}
+        {isAdminPage && <EditMenu />}
       </main>
     </>
   );
