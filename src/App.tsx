@@ -9,7 +9,7 @@ import { CardList } from "./components/CardList";
 function App() {
   const contentData = useAppSelector((state) => state.content.data);
   const adminMode = useAppSelector((state) => state.admin.adminMode);
-  console.log(adminMode);
+
   return (
     <>
       <Header />
