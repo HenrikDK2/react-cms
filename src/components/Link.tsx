@@ -74,7 +74,6 @@ export const EditLink: FC = () => {
         value={content.props.href}
       />
       <WeightPicker content={content} />
-
       <ColorPicker
         id="bgcolor"
         currentColor={content.props.bgcolor}
