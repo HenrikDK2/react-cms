@@ -37,7 +37,7 @@ export const defaultLink: LinkContent = {
 
 export const defaultHeading: HeadingContent = {
   type: "heading",
-  props: { text: "This is a heading", color: "#000" },
+  props: { text: "This is a heading", color: "#000", weight: "bold" },
 };
 
 const initalState: ContentState = stateInStorage() || {
