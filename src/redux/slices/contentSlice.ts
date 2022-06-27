@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { HeadingContent } from "../../components/Heading";
 import { LinkContent } from "../../components/Link";
 import { CardListContent } from "../../components/CardList";
-import { Content, ContentState, DragItem } from "../../types/content";
+import { Content, ContentState, DragItem } from "../../types";
 
 const stateInStorage = (): ContentState | undefined => {
   const strData = sessionStorage.getItem("contentState");

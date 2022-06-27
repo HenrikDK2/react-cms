@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../redux/store";
 import { IoClose, IoList } from "react-icons/io5";
 import { EditLink } from "./Link";
 import { EditHeading } from "./Heading";
-import { Content } from "../types/content";
+import { Content } from "../types";
 import { closeMenu } from "../redux/slices/adminSlice";
 import { EditCardList } from "./CardList";
 import { BiLink, BiHeading } from "react-icons/bi";

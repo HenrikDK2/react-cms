@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/store";
+import { FontWeight, HexColor } from "../types";
 import { getContent, updateContentWithNewProps } from "../utils";
 import { ColorPicker } from "./ColorPicker";
 import { EditWrapper } from "./EditWrapper";
@@ -10,8 +11,8 @@ type Index = { index: number };
 
 interface IHeadingProps {
   text: string;
-  color: "#000";
-  weight: "bold" | "normal";
+  color: HexColor;
+  weight: FontWeight;
 }
 
 export type HeadingContent = { type: "heading"; props: IHeadingProps };
@@ -21,20 +22,16 @@ export const Heading: FC<IHeadingProps & Index> = ({
   index,
   color,
   weight,
-}) => {
-  console.log(weight);
-
-  return (
-    <EditWrapper index={index}>
-      <h2
-        className="text-center my-4 font-bold text-4xl"
-        style={{ color, fontWeight: weight }}
-      >
-        {text}
-      </h2>
-    </EditWrapper>
-  );
-};
+}) => (
+  <EditWrapper index={index}>
+    <h2
+      className="text-center my-4 font-bold text-4xl"
+      style={{ color, fontWeight: weight }}
+    >
+      {text}
+    </h2>
+  </EditWrapper>
+);
 
 export const EditHeading: FC = () => {
   const { data } = useAppSelector((state) => state.content);

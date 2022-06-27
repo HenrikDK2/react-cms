@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { EditContentIndex } from "../../types/content";
+import { EditContentIndex } from "../../types";
 
 interface InitialState {
   editContentIndex: EditContentIndex;

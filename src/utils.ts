@@ -1,5 +1,5 @@
 import { updateContent } from "./redux/slices/contentSlice";
-import { EditContentIndex, ContentArr, Content } from "./types/content";
+import { EditContentIndex, ContentArr, Content } from "./types";
 
 export const getContent = (
   data: ContentArr,
