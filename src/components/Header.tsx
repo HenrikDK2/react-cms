@@ -1,5 +1,9 @@
 import { FC } from "react";
-import { disableAdminMode, enableAdminMode } from "../redux/slices/adminSlice";
+import {
+  closeMenu,
+  disableAdminMode,
+  enableAdminMode,
+} from "../redux/slices/adminSlice";
 import { useAppDispatch, useAppSelector } from "../redux/store";
 
 export const Header: FC = () => {
@@ -12,9 +16,12 @@ export const Header: FC = () => {
         <h1 className="font-bold text-2xl">React CMS</h1>
         <button
           onClick={() => {
-            !adminMode
-              ? dispatch(enableAdminMode())
-              : dispatch(disableAdminMode());
+            if (adminMode) {
+              dispatch(closeMenu());
+              dispatch(disableAdminMode());
+            } else {
+              dispatch(enableAdminMode());
+            }
           }}
           className="ml-auto block max-w-max font-bold text-white bg-[#d21b1b] rounded-md py-2 px-4"
         >
