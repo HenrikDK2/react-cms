@@ -19,7 +19,7 @@ interface ILinkProps {
 
 export type LinkContent = { type: "link"; props: ILinkProps };
 
-export const Button: FC<ILinkProps & Index> = ({
+export const Link: FC<ILinkProps & Index> = ({
   text,
   bgcolor,
   color,

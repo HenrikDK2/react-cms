@@ -7,17 +7,15 @@ type InputProps = React.HTMLProps<HTMLInputElement> & {
   label?: string;
 };
 
-export const Input: FC<InputProps> = (props) => {
-  return (
-    <div className="my-4 flex flex-col">
-      <label className="mb-2" htmlFor={props.id}>
-        {props.label || "Text content"}
-      </label>
-      <input
-        className="border-[#e7eae9] border-2 rounded-lg px-4 py-2"
-        placeholder="Text"
-        {...props}
-      />
-    </div>
-  );
-};
+export const Input: FC<InputProps> = (props) => (
+  <div className="my-4 flex flex-col">
+    <label className="mb-2" htmlFor={props.id}>
+      {props.label || "Text content"}
+    </label>
+    <input
+      className="border-[#e7eae9] border-2 rounded-lg px-4 py-2"
+      placeholder="Text"
+      {...props}
+    />
+  </div>
+);

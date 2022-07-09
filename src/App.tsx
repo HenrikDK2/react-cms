@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import { Button } from "./components/Link";
+import { Link } from "./components/Link";
 import { Heading } from "./components/Heading";
 import { EditMenu } from "./components/EditMenu";
 import { useAppSelector } from "./redux/store";
@@ -17,7 +17,7 @@ function App() {
         {contentData.map((content, index) => {
           switch (content.type) {
             case "link":
-              return <Button index={index} key={index} {...content.props} />;
+              return <Link index={index} key={index} {...content.props} />;
             case "heading":
               return <Heading index={index} key={index} {...content.props} />;
             case "cardList":
