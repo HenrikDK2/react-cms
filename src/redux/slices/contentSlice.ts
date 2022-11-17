@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-array-constructor */
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { HeadingContent } from "../../components/Heading";
-import { LinkContent } from "../../components/Link";
-import { CardListContent } from "../../components/CardList";
+import { HeadingContent } from "../../components/content/Heading";
+import { LinkContent } from "../../components/content/Link";
+import { CardListContent } from "../../components/content/CardList";
 import { Content, ContentState, DragItem } from "../../types";
 
 const stateInStorage = (): ContentState | undefined => {

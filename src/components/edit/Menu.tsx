@@ -1,18 +1,18 @@
 import { KeyboardEvent, FC } from "react";
-import { useAppDispatch, useAppSelector } from "../redux/store";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { IoClose, IoList } from "react-icons/io5";
-import { EditLink } from "./Link";
-import { EditHeading } from "./Heading";
-import { Content } from "../types";
-import { closeMenu } from "../redux/slices/adminSlice";
-import { EditCardList } from "./CardList";
+import { EditLink } from "../content/Link";
+import { EditHeading } from "../content/Heading";
+import { Content } from "../../types";
+import { closeMenu } from "../../redux/slices/adminSlice";
+import { EditCardList } from "../content/CardList";
 import { BiLink, BiHeading } from "react-icons/bi";
 import {
   addContent,
   defaultHeading,
   defaultLink,
   defaultCardList,
-} from "../redux/slices/contentSlice";
+} from "../../redux/slices/contentSlice";
 
 interface IRenderProps {
   currentType: Content["type"];
@@ -26,6 +26,8 @@ const RenderEditableContent: FC<IRenderProps> = ({ currentType }) => {
       return <EditHeading />;
     case "cardList":
       return <EditCardList />;
+    default:
+      return null;
   }
 };
 

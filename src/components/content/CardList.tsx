@@ -1,16 +1,16 @@
 import { FC } from "react";
-import placeholderImage from "../images/placeholder.gif";
-import { closeMenu, setEditContentIndex } from "../redux/slices/adminSlice";
+import placeholderImage from "../../images/placeholder.gif";
+import { closeMenu, setEditContentIndex } from "../../redux/slices/adminSlice";
 import {
   defaultCardItem,
   updateContent,
   deleteContent,
-} from "../redux/slices/contentSlice";
-import { useAppDispatch, useAppSelector } from "../redux/store";
-import { getContent } from "../utils";
-import { EditWrapper } from "./EditWrapper";
-import { Input } from "./Input";
-import { Textarea } from "./Textarea";
+} from "../../redux/slices/contentSlice";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
+import { getContent } from "../../utils";
+import { EditWrapper } from "../edit/Wrapper";
+import { Input } from "../Input";
+import { Textarea } from "../Textarea";
 
 export interface CardItem {
   src?: string;

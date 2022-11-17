@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { HexColor } from "../types";
+import { HexColor } from "../../types";
 
 interface IColorPickerProps {
   onSelectColor: (color: HexColor) => void;

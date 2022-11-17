@@ -1,6 +1,6 @@
-import { LinkContent } from "../components/Link";
+import { LinkContent } from "../components/content/Link";
 import { HeadingContent } from "../components/Heading";
-import { CardListContent } from "../components/CardList";
+import { CardListContent } from "../components/content/CardList";
 
 export type HexColor = `#${string}`;
 export type Content = LinkContent | HeadingContent | CardListContent;

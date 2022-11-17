@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { useAppDispatch, useAppSelector } from "../redux/store";
-import { FontWeight, HexColor } from "../types";
-import { getContent, updateContentWithNewProps } from "../utils";
-import { ColorPicker } from "./ColorPicker";
-import { EditWrapper } from "./EditWrapper";
-import { Input } from "./Input";
-import { WeightPicker } from "./WeightPicker";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
+import { FontWeight, HexColor } from "../../types";
+import { getContent, updateContentWithNewProps } from "../../utils";
+import { ColorPicker } from "../edit/ColorPicker";
+import { EditWrapper } from "../edit/Wrapper";
+import { Input } from "../Input";
+import { WeightPicker } from "../edit/WeightPicker";
 
 type Index = { index: number };
 

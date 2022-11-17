@@ -3,11 +3,11 @@ import {
   deleteContent,
   swapContent,
   updateDragItem,
-} from "../redux/slices/contentSlice";
-import { useAppDispatch, useAppSelector } from "../redux/store";
+} from "../../redux/slices/contentSlice";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { FaRegEdit } from "react-icons/fa";
 import { AiOutlineDelete } from "react-icons/ai";
-import { openMenu, setEditContentIndex } from "../redux/slices/adminSlice";
+import { openMenu, setEditContentIndex } from "../../redux/slices/adminSlice";
 
 interface IContainerProps {
   index: number;
@@ -20,12 +20,8 @@ export const EditWrapper: FC<IContainerProps> = ({ index, children }) => {
   const dispatch = useAppDispatch();
 
   if (adminMode) {
-    const handleDragStart = () => {
-      dispatch(updateDragItem(index));
-    };
-
     const handleDragEnter = (e: DragEvent<HTMLDivElement>) => {
-      e.currentTarget.classList.add("opacity-50");
+      e.currentTarget.classList.add("opacity-50", "border-red-500");
 
       if (typeof dragItem === "number") {
         dispatch(updateDragItem(index));
@@ -43,11 +39,17 @@ export const EditWrapper: FC<IContainerProps> = ({ index, children }) => {
       <div
         draggable="true"
         onDragEnter={handleDragEnter}
-        onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
         onDragOver={(e) => e.preventDefault()}
-        onDragExit={(e) => e.currentTarget.classList.remove("opacity-50")}
-        onDrop={(e) => e.currentTarget.classList.remove("opacity-50")}
+        onDragLeave={(e) =>
+          e.currentTarget.classList.remove("opacity-50", "border-red-500")
+        }
+        onDragExit={(e) =>
+          e.currentTarget.classList.remove("opacity-50", "border-red-500")
+        }
+        onDrop={(e) =>
+          e.currentTarget.classList.remove("opacity-50", "border-red-500")
+        }
         className="relative border-dashed border-2 py-2 border-indigo-500 flex justify-center items-center mb-4 hover:cursor-move"
       >
         <button
@@ -64,7 +66,7 @@ export const EditWrapper: FC<IContainerProps> = ({ index, children }) => {
             dispatch(setEditContentIndex(null));
             dispatch(deleteContent(index));
           }}
-          className="absolute right-6 top-0 cursor-pointer"
+          className="absolute right-6 top-0 cursor-pointer  "
         >
           <AiOutlineDelete aria-label="Delete content" className="text-xl" />
         </button>

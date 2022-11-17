@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { AiOutlineBold } from "react-icons/ai";
 import { BiFont } from "react-icons/bi";
-import { useAppDispatch, useAppSelector } from "../redux/store";
-import { FontWeight } from "../types";
-import { updateContentWithNewProps } from "../utils";
-import { HeadingContent } from "./Heading";
-import { LinkContent } from "./Link";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
+import { FontWeight } from "../../types";
+import { updateContentWithNewProps } from "../../utils";
+import { HeadingContent } from "../content/Heading";
+import { LinkContent } from "../content/Link";
 
 interface IWeightPickerProps {
   content: HeadingContent | LinkContent;

@@ -7,18 +7,16 @@ type TextareaProps = React.HTMLProps<HTMLTextAreaElement> & {
   label?: string;
 };
 
-export const Textarea: FC<TextareaProps> = (props) => {
-  return (
-    <div className="my-4 flex flex-col">
-      <label className="mb-2" htmlFor={props.id}>
-        {props.label || "Text content"}
-      </label>
-      <textarea
-        rows={5}
-        className="border-[#e7eae9] border-2 rounded-lg px-4 py-2"
-        placeholder="Text content"
-        {...props}
-      />
-    </div>
-  );
-};
+export const Textarea: FC<TextareaProps> = (props) => (
+  <div className="my-4 flex flex-col">
+    <label className="mb-2" htmlFor={props.id}>
+      {props.label || "Text content"}
+    </label>
+    <textarea
+      rows={5}
+      className="border-[#e7eae9] border-2 rounded-lg px-4 py-2"
+      placeholder="Text content"
+      {...props}
+    />
+  </div>
+);
