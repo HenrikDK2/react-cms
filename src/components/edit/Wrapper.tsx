@@ -20,7 +20,9 @@ interface IContainerProps {
 
 export const EditWrapper: FC<IContainerProps> = ({ index, children }) => {
   const { dragItem, data } = useAppSelector((state) => state.content);
-  const { adminMode } = useAppSelector((state) => state.admin);
+  const { adminMode, editContentIndex } = useAppSelector(
+    (state) => state.admin
+  );
   const dispatch = useAppDispatch();
 
   if (adminMode) {
@@ -83,6 +85,12 @@ export const EditWrapper: FC<IContainerProps> = ({ index, children }) => {
             if (index > 0) {
               const newIndex = index - 1;
               dispatch(swapContent([index, newIndex]));
+
+              if (editContentIndex === index) {
+                dispatch(setEditContentIndex(newIndex));
+              } else {
+                dispatch(closeMenu());
+              }
             }
           }}
           className={`absolute left-2 top-2 cursor-pointer ${
@@ -99,6 +107,12 @@ export const EditWrapper: FC<IContainerProps> = ({ index, children }) => {
             if (index !== data.length - 1) {
               const newIndex = index + 1;
               dispatch(swapContent([index, newIndex]));
+
+              if (editContentIndex === index) {
+                dispatch(setEditContentIndex(newIndex));
+              } else {
+                dispatch(closeMenu());
+              }
             }
           }}
           className={`absolute left-8 top-2 cursor-pointer ${
