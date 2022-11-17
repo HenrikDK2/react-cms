@@ -43,7 +43,7 @@ export const defaultHeading: HeadingContent = {
 
 const initalState: ContentState = stateInStorage() || {
   data: [defaultHeading, defaultCardList, defaultLink],
-  dragItem: null,
+  dragItem: 1,
 };
 
 export const contentArrSlice = createSlice({
