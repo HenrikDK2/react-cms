@@ -19,14 +19,7 @@ interface ILinkProps {
 
 export type LinkContent = { type: "link"; props: ILinkProps };
 
-export const Link: FC<ILinkProps & Index> = ({
-  text,
-  bgcolor,
-  color,
-  weight,
-  href,
-  index,
-}) => (
+export const Link: FC<ILinkProps & Index> = ({ text, bgcolor, color, weight, href, index }) => (
   <EditWrapper index={index}>
     <a
       href={href}
@@ -49,13 +42,7 @@ export const EditLink: FC = () => {
       <Input
         id="text-input"
         onChange={(e) => {
-          dispatch(
-            updateContentWithNewProps(
-              content,
-              { text: e.currentTarget.value },
-              editContentIndex
-            )
-          );
+          dispatch(updateContentWithNewProps(content, { text: e.currentTarget.value }, editContentIndex));
         }}
         value={content.props.text}
       />
@@ -63,13 +50,7 @@ export const EditLink: FC = () => {
         id="href-input"
         label="Redirect"
         onChange={(e) => {
-          dispatch(
-            updateContentWithNewProps(
-              content,
-              { href: e.currentTarget.value },
-              editContentIndex
-            )
-          );
+          dispatch(updateContentWithNewProps(content, { href: e.currentTarget.value }, editContentIndex));
         }}
         value={content.props.href}
       />
@@ -78,21 +59,13 @@ export const EditLink: FC = () => {
         id="bgcolor"
         currentColor={content.props.bgcolor}
         label="Background Color"
-        onSelectColor={(bgcolor) =>
-          dispatch(
-            updateContentWithNewProps(content, { bgcolor }, editContentIndex)
-          )
-        }
+        onSelectColor={(bgcolor) => dispatch(updateContentWithNewProps(content, { bgcolor }, editContentIndex))}
       />
       <ColorPicker
         id="textcolor"
         currentColor={content.props.color}
         label="Text Color"
-        onSelectColor={(color) =>
-          dispatch(
-            updateContentWithNewProps(content, { color }, editContentIndex)
-          )
-        }
+        onSelectColor={(color) => dispatch(updateContentWithNewProps(content, { color }, editContentIndex))}
       />
     </>
   );

@@ -35,12 +35,5 @@ export const menuSlice = createSlice({
   },
 });
 
-export const {
-  openMenu,
-  enableAdminMode,
-  disableAdminMode,
-  closeMenu,
-  setEditContentIndex,
-} = menuSlice.actions;
-
+export const { openMenu, enableAdminMode, disableAdminMode, closeMenu, setEditContentIndex } = menuSlice.actions;
 export default menuSlice.reducer;

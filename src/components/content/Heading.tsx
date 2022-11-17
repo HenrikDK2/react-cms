@@ -17,17 +17,9 @@ interface IHeadingProps {
 
 export type HeadingContent = { type: "heading"; props: IHeadingProps };
 
-export const Heading: FC<IHeadingProps & Index> = ({
-  text,
-  index,
-  color,
-  weight,
-}) => (
+export const Heading: FC<IHeadingProps & Index> = ({ text, index, color, weight }) => (
   <EditWrapper index={index}>
-    <h2
-      className="text-center my-4 font-bold text-4xl"
-      style={{ color, fontWeight: weight }}
-    >
+    <h2 className="text-center my-4 font-bold text-4xl" style={{ color, fontWeight: weight }}>
       {text}
     </h2>
   </EditWrapper>
@@ -45,13 +37,7 @@ export const EditHeading: FC = () => {
         <Input
           id="text-input"
           onChange={(e) => {
-            dispatch(
-              updateContentWithNewProps(
-                content,
-                { text: e.currentTarget.value },
-                editContentIndex
-              )
-            );
+            dispatch(updateContentWithNewProps(content, { text: e.currentTarget.value }, editContentIndex));
           }}
           value={content.props.text}
         />
@@ -60,11 +46,7 @@ export const EditHeading: FC = () => {
           id="textcolor"
           currentColor={content.props.color}
           label="Text Color"
-          onSelectColor={(color) =>
-            dispatch(
-              updateContentWithNewProps(content, { color }, editContentIndex)
-            )
-          }
+          onSelectColor={(color) => dispatch(updateContentWithNewProps(content, { color }, editContentIndex))}
         />
       </>
     );

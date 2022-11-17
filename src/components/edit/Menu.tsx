@@ -7,12 +7,7 @@ import { Content } from "../../types";
 import { closeMenu } from "../../redux/slices/adminSlice";
 import { EditCardList } from "../content/CardList";
 import { BiLink, BiHeading } from "react-icons/bi";
-import {
-  addContent,
-  defaultHeading,
-  defaultLink,
-  defaultCardList,
-} from "../../redux/slices/contentSlice";
+import { addContent, defaultHeading, defaultLink, defaultCardList } from "../../redux/slices/contentSlice";
 
 interface IRenderProps {
   currentType: Content["type"];
@@ -63,25 +58,13 @@ export const EditMenu: FC = () => {
       </aside>
       <aside className="fixed h-12 w-64 bottom-0 left-1/2 z-10 bg-white -translate-x-1/2 shadow-md border-2 border-[#e5e7eb] flex justify-around">
         <button>
-          <BiLink
-            aria-label="Add link"
-            onClick={() => dispatch(addContent(defaultLink))}
-            size={40}
-          />
+          <BiLink aria-label="Add link" onClick={() => dispatch(addContent(defaultLink))} size={40} />
         </button>
         <button>
-          <BiHeading
-            aria-label="Add heading"
-            onClick={() => dispatch(addContent(defaultHeading))}
-            size={40}
-          />
+          <BiHeading aria-label="Add heading" onClick={() => dispatch(addContent(defaultHeading))} size={40} />
         </button>
         <button>
-          <IoList
-            aria-label="Add card list"
-            onClick={() => dispatch(addContent(defaultCardList))}
-            size={40}
-          />
+          <IoList aria-label="Add card list" onClick={() => dispatch(addContent(defaultCardList))} size={40} />
         </button>
       </aside>
     </>

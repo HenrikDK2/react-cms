@@ -1,11 +1,7 @@
 import { FC } from "react";
 import placeholderImage from "../../images/placeholder.gif";
 import { closeMenu, setEditContentIndex } from "../../redux/slices/adminSlice";
-import {
-  defaultCardItem,
-  updateContent,
-  deleteContent,
-} from "../../redux/slices/contentSlice";
+import { defaultCardItem, updateContent, deleteContent } from "../../redux/slices/contentSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { getContent } from "../../utils";
 import { EditWrapper } from "../edit/Wrapper";
@@ -35,13 +31,7 @@ export const CardList: FC<ICardListProps & Index> = ({ items, index }) => (
     <ul className="flex flex-wrap gap-16 justify-center my-8">
       {items.map(({ alt, src, title, text }, i) => (
         <li key={i} className="w-[300px]">
-          <img
-            width={300}
-            height={224}
-            className="block min-h-[224px]"
-            alt={alt}
-            src={src || placeholderImage}
-          />
+          <img width={300} height={224} className="block min-h-[224px]" alt={alt} src={src || placeholderImage} />
           <h3 className="font-bold text-2xl mt-2">{title}</h3>
           <p>{text}</p>
         </li>
@@ -81,9 +71,7 @@ export const EditCardList: FC = () => {
       } else {
         const newContent: CardListContent = JSON.parse(JSON.stringify(content));
         newContent.props.items.pop();
-        dispatch(
-          updateContent({ content: newContent, index: editContentIndex })
-        );
+        dispatch(updateContent({ content: newContent, index: editContentIndex }));
       }
     };
 
@@ -116,10 +104,7 @@ export const EditCardList: FC = () => {
         </ul>
 
         <div className="flex justify-between items-center mt-6">
-          <button
-            onClick={handleRemoveItem}
-            className="bg-red-600 py-2 px-4 rounded-md text-white font-bold flex-1"
-          >
+          <button onClick={handleRemoveItem} className="bg-red-600 py-2 px-4 rounded-md text-white font-bold flex-1">
             Remove
           </button>
           <button

@@ -21,12 +21,7 @@ const colors: HexColor[] = [
   "#ea4c89",
 ];
 
-export const ColorPicker: FC<IColorPickerProps> = ({
-  onSelectColor,
-  id,
-  currentColor,
-  label,
-}) => (
+export const ColorPicker: FC<IColorPickerProps> = ({ onSelectColor, id, currentColor, label }) => (
   <div className="my-4">
     <label className="mb-2" htmlFor={id}>
       {label}

@@ -1,9 +1,5 @@
 import { FC } from "react";
-import {
-  closeMenu,
-  disableAdminMode,
-  enableAdminMode,
-} from "../redux/slices/adminSlice";
+import { closeMenu, disableAdminMode, enableAdminMode } from "../redux/slices/adminSlice";
 import { useAppDispatch, useAppSelector } from "../redux/store";
 
 export const Header: FC = () => {

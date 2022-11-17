@@ -54,10 +54,7 @@ export const contentArrSlice = createSlice({
       state.data.push(action.payload);
       sessionStorage.setItem("contentState", JSON.stringify(state));
     },
-    updateContent: (
-      state,
-      action: PayloadAction<{ content: Content; index: number }>
-    ) => {
+    updateContent: (state, action: PayloadAction<{ content: Content; index: number }>) => {
       state.data[action.payload.index] = action.payload.content;
       sessionStorage.setItem("contentState", JSON.stringify(state));
     },
@@ -77,12 +74,5 @@ export const contentArrSlice = createSlice({
   },
 });
 
-export const {
-  swapContent,
-  deleteContent,
-  addContent,
-  updateDragItem,
-  updateContent,
-} = contentArrSlice.actions;
-
+export const { swapContent, deleteContent, addContent, updateDragItem, updateContent } = contentArrSlice.actions;
 export default contentArrSlice.reducer;

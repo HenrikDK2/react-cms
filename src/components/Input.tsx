@@ -12,10 +12,6 @@ export const Input: FC<InputProps> = (props) => (
     <label className="mb-2" htmlFor={props.id}>
       {props.label || "Text content"}
     </label>
-    <input
-      className="border-[#e7eae9] border-2 rounded-lg px-4 py-2"
-      placeholder="Text"
-      {...props}
-    />
+    <input className="border-[#e7eae9] border-2 rounded-lg px-4 py-2" placeholder="Text" {...props} />
   </div>
 );
