@@ -6,7 +6,7 @@ import {
 } from "../../redux/slices/contentSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { FaRegEdit } from "react-icons/fa";
-import { AiOutlineDelete } from "react-icons/ai";
+import { AiOutlineDelete, AiOutlineDown, AiOutlineUp } from "react-icons/ai";
 import { openMenu, setEditContentIndex } from "../../redux/slices/adminSlice";
 
 interface IContainerProps {
@@ -15,24 +15,19 @@ interface IContainerProps {
 }
 
 export const EditWrapper: FC<IContainerProps> = ({ index, children }) => {
-  const { dragItem } = useAppSelector((state) => state.content);
+  const { dragItem, data } = useAppSelector((state) => state.content);
   const adminMode = useAppSelector((state) => state.admin.adminMode);
   const dispatch = useAppDispatch();
 
   if (adminMode) {
     const handleDragEnter = (e: DragEvent<HTMLDivElement>) => {
       e.currentTarget.classList.add("opacity-50", "border-red-500");
-
-      if (typeof dragItem === "number") {
-        dispatch(updateDragItem(index));
-      }
+      dispatch(updateDragItem(index));
     };
 
     const handleDragEnd = () => {
-      if (typeof dragItem === "number") {
-        dispatch(swapContent([dragItem, index]));
-        dispatch(setEditContentIndex(dragItem));
-      }
+      dispatch(swapContent([dragItem, index]));
+      dispatch(setEditContentIndex(dragItem));
     };
 
     return (
@@ -52,24 +47,62 @@ export const EditWrapper: FC<IContainerProps> = ({ index, children }) => {
         }
         className="relative border-dashed border-2 py-2 border-indigo-500 flex justify-center items-center mb-4 hover:cursor-move"
       >
+        {/* Open edit menu */}
+
         <button
           onClick={() => {
             dispatch(openMenu());
             dispatch(setEditContentIndex(index));
           }}
-          className="absolute right-0 top-0 cursor-pointer"
+          className="absolute right-2 top-2 cursor-pointer"
         >
           <FaRegEdit aria-label="Open edit menu" className="text-xl" />
         </button>
+
+        {/* Delete content */}
+
         <button
           onClick={() => {
             dispatch(setEditContentIndex(null));
             dispatch(deleteContent(index));
           }}
-          className="absolute right-6 top-0 cursor-pointer  "
+          className="absolute right-8 top-2 cursor-pointer  "
         >
           <AiOutlineDelete aria-label="Delete content" className="text-xl" />
         </button>
+
+        {/* Move content up */}
+
+        <button
+          onClick={() => {
+            if (index > 0) {
+              const newIndex = index - 1;
+              dispatch(swapContent([index, newIndex]));
+            }
+          }}
+          className={`absolute left-2 top-2 cursor-pointer ${
+            index === 0 && "opacity-20 pointer-events-none"
+          }`}
+        >
+          <AiOutlineUp aria-label="Move content up" className="text-xl" />
+        </button>
+
+        {/* Move content down */}
+
+        <button
+          onClick={() => {
+            if (index !== data.length - 1) {
+              const newIndex = index + 1;
+              dispatch(swapContent([index, newIndex]));
+            }
+          }}
+          className={`absolute left-8 top-2 cursor-pointer ${
+            index === data.length - 1 && "opacity-20 pointer-events-none"
+          }`}
+        >
+          <AiOutlineDown aria-label="Move content down" className={"text-xl"} />
+        </button>
+
         <div className="w-[100%] select-none pointer-events-none">
           {children}
         </div>
