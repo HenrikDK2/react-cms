@@ -7,7 +7,11 @@ import {
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { FaRegEdit } from "react-icons/fa";
 import { AiOutlineDelete, AiOutlineDown, AiOutlineUp } from "react-icons/ai";
-import { openMenu, setEditContentIndex } from "../../redux/slices/adminSlice";
+import {
+  closeMenu,
+  openMenu,
+  setEditContentIndex,
+} from "../../redux/slices/adminSlice";
 
 interface IContainerProps {
   index: number;
@@ -16,7 +20,7 @@ interface IContainerProps {
 
 export const EditWrapper: FC<IContainerProps> = ({ index, children }) => {
   const { dragItem, data } = useAppSelector((state) => state.content);
-  const adminMode = useAppSelector((state) => state.admin.adminMode);
+  const { adminMode } = useAppSelector((state) => state.admin);
   const dispatch = useAppDispatch();
 
   if (adminMode) {
@@ -63,6 +67,7 @@ export const EditWrapper: FC<IContainerProps> = ({ index, children }) => {
 
         <button
           onClick={() => {
+            dispatch(closeMenu());
             dispatch(setEditContentIndex(null));
             dispatch(deleteContent(index));
           }}
