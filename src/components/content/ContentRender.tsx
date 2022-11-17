@@ -1,14 +1,14 @@
 import React from "react";
-import { Link } from "./content/Link";
-import { Heading } from "./content/Heading";
-import { useAppSelector } from "../redux/store";
-import { CardList } from "./content/CardList";
+import { Link } from "./Link";
+import { Heading } from "./Heading";
+import { useAppSelector } from "../../redux/store";
+import { CardList } from "./CardList";
 
-interface ComponentRendererProps {
+interface ComponentRenderProps {
   children?: React.ReactNode;
 }
 
-export const ComponentRenderer: React.FC<ComponentRendererProps> = () => {
+export const ComponentRender: React.FC<ComponentRenderProps> = () => {
   const contentData = useAppSelector((state) => state.content.data);
 
   return (
