@@ -1,19 +1,20 @@
 import { FC } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { FontWeight, HexColor } from "../../types";
+import { FontWeight, HexColor, UniversalContentProps } from "../../types";
 import { getContent, updateContentWithNewProps } from "../../utils";
 import { ColorPicker } from "../edit/ColorPicker";
 import { ContentWrapper } from "./Wrapper";
 import { Input } from "../Input";
 import { WeightPicker } from "../edit/WeightPicker";
+import { SpacingSliders } from "../edit/SpacingSliders";
 
 type Index = { index: number };
 
-interface IHeadingProps {
+type IHeadingProps = {
   text: string;
   color: HexColor;
   weight: FontWeight;
-}
+} & UniversalContentProps;
 
 export type HeadingContent = { type: "heading"; props: IHeadingProps };
 
@@ -48,6 +49,7 @@ export const EditHeading: FC = () => {
           label="Text Color"
           onSelectColor={(color) => dispatch(updateContentWithNewProps(content, { color }, editContentIndex))}
         />
+        <SpacingSliders content={content} editContentIndex={editContentIndex} />
       </>
     );
   }

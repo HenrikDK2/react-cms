@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { FaRegEdit } from "react-icons/fa";
 import { AiOutlineDelete, AiOutlineDown, AiOutlineUp } from "react-icons/ai";
 import { closeMenu, openMenu, setEditContentIndex } from "../../redux/slices/adminSlice";
-
+import { getContent } from "../../utils";
 interface IContainerProps {
   index: number;
   children: any;
@@ -13,7 +13,14 @@ interface IContainerProps {
 export const ContentWrapper: FC<IContainerProps> = ({ index, children }) => {
   const { dragItem, data } = useAppSelector((state) => state.content);
   const { adminMode, editContentIndex } = useAppSelector((state) => state.admin);
+  const content = getContent(data, index);
   const dispatch = useAppDispatch();
+
+  const style = {
+    padding: `${content.props.py}px ${content.props.px}px`,
+    marginTop: `${content.props.mt}px`,
+    marginBottom: `${content.props.mb}px`,
+  };
 
   if (adminMode) {
     const handleDragEnter = (e: DragEvent<HTMLDivElement>) => {
@@ -104,10 +111,12 @@ export const ContentWrapper: FC<IContainerProps> = ({ index, children }) => {
           <AiOutlineDown aria-label="Move content down" className={"text-xl"} />
         </button>
 
-        <div className="w-[100%] select-none pointer-events-none">{children}</div>
+        <div className="w-[100%] select-none pointer-events-none" style={style}>
+          {children}
+        </div>
       </div>
     );
   }
 
-  return children;
+  return <div style={style}>{children}</div>;
 };

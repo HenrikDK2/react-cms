@@ -2,11 +2,13 @@ import { FC } from "react";
 import placeholderImage from "../../images/placeholder.gif";
 import { closeMenu, setEditContentIndex } from "../../redux/slices/adminSlice";
 import { defaultCardItem, updateContent, deleteContent } from "../../redux/slices/contentSlice";
+import { UniversalContentProps } from "../../types";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { getContent } from "../../utils";
 import { ContentWrapper } from "./Wrapper";
 import { Input } from "../Input";
 import { Textarea } from "../Textarea";
+import { SpacingSliders } from "../edit/SpacingSliders";
 
 export interface CardItem {
   src?: string;
@@ -17,9 +19,9 @@ export interface CardItem {
 
 type Index = { index: number };
 
-export interface ICardListProps {
+export type ICardListProps = {
   items: CardItem[];
-}
+} & UniversalContentProps;
 
 export interface CardListContent {
   type: "cardList";
@@ -83,6 +85,7 @@ export const EditCardList: FC = () => {
 
     return (
       <>
+        <SpacingSliders content={content} editContentIndex={editContentIndex} />
         <ul>
           {content.props.items.map((item, i) => (
             <li key={i}>

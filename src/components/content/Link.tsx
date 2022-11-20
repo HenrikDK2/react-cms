@@ -1,21 +1,22 @@
 import { FC } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { FontWeight, HexColor } from "../../types";
+import { FontWeight, HexColor, UniversalContentProps } from "../../types";
 import { getContent, updateContentWithNewProps } from "../../utils";
 import { ColorPicker } from "../edit/ColorPicker";
 import { ContentWrapper } from "./Wrapper";
 import { Input } from "../Input";
 import { WeightPicker } from "../edit/WeightPicker";
+import { SpacingSliders } from "../edit/SpacingSliders";
 
 type Index = { index: number };
 
-interface ILinkProps {
+type ILinkProps = {
   text: string;
   weight: FontWeight;
   color: HexColor;
   href: string;
   bgcolor: HexColor;
-}
+} & UniversalContentProps;
 
 export type LinkContent = { type: "link"; props: ILinkProps };
 
@@ -67,6 +68,7 @@ export const EditLink: FC = () => {
         label="Text Color"
         onSelectColor={(color) => dispatch(updateContentWithNewProps(content, { color }, editContentIndex))}
       />
+      <SpacingSliders content={content} editContentIndex={editContentIndex} />
     </>
   );
 };

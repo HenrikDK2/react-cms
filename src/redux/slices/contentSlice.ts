@@ -7,8 +7,8 @@ import { Content, ContentState, DragItem } from "../../types";
 import { MarkdownContent } from "../../components/content/Markdown";
 
 const universalProps = {
-  px: 4,
-  py: 4,
+  px: 0,
+  py: 0,
   mt: 0,
   mb: 0,
 };
@@ -23,6 +23,7 @@ export const defaultCardList: CardListContent = {
   type: "cardList",
   props: {
     items: [defaultCardItem, defaultCardItem, defaultCardItem],
+    ...universalProps,
   },
 };
 
@@ -34,19 +35,20 @@ export const defaultLink: LinkContent = {
     href: "https://google.dk",
     bgcolor: "#d21b1b",
     color: "#fff",
+    ...universalProps,
   },
 };
 
 export const defaultHeading: HeadingContent = {
   type: "heading",
-  props: { text: "This is a heading", color: "#000", weight: "bold" },
+  props: { text: "This is a heading", color: "#000", weight: "bold", ...universalProps },
 };
 
 export const defaultMarkdown: MarkdownContent = {
   type: "markdown",
   props: {
-    ...universalProps,
     content: `Hi! I'm your first Markdown file in **StackEdit**. If you want to learn about StackEdit, you can read me. If you want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the **file explorer** on the left corner of the navigation bar.`,
+    ...universalProps,
   },
 };
 
