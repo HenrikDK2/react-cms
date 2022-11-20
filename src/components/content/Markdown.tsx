@@ -19,7 +19,7 @@ export type MarkdownContent = { type: "markdown"; props: MarkdownProps };
 
 export const Markdown: React.FC<MarkdownProps & Index> = (props) => (
   <ContentWrapper index={props.index}>
-    <ReactMarkdown remarkPlugins={[remarkGfm]}>{props.content}</ReactMarkdown>
+    <ReactMarkdown children={props.content} remarkPlugins={[remarkGfm]} />
   </ContentWrapper>
 );
 
