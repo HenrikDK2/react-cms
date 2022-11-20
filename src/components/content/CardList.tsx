@@ -4,7 +4,7 @@ import { closeMenu, setEditContentIndex } from "../../redux/slices/adminSlice";
 import { defaultCardItem, updateContent, deleteContent } from "../../redux/slices/contentSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { getContent } from "../../utils";
-import { EditWrapper } from "../edit/Wrapper";
+import { ContentWrapper } from "../edit/Wrapper";
 import { Input } from "../Input";
 import { Textarea } from "../Textarea";
 
@@ -27,7 +27,7 @@ export interface CardListContent {
 }
 
 export const CardList: FC<ICardListProps & Index> = ({ items, index }) => (
-  <EditWrapper index={index}>
+  <ContentWrapper index={index}>
     <ul className="flex flex-wrap gap-16 justify-center my-8">
       {items.map(({ alt, src, title, text }, i) => (
         <li key={i} className="w-[300px]">
@@ -37,7 +37,7 @@ export const CardList: FC<ICardListProps & Index> = ({ items, index }) => (
         </li>
       ))}
     </ul>
-  </EditWrapper>
+  </ContentWrapper>
 );
 
 export const EditCardList: FC = () => {

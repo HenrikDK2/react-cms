@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { FontWeight, HexColor } from "../../types";
 import { getContent, updateContentWithNewProps } from "../../utils";
 import { ColorPicker } from "../edit/ColorPicker";
-import { EditWrapper } from "../edit/Wrapper";
+import { ContentWrapper } from "../edit/Wrapper";
 import { Input } from "../Input";
 import { WeightPicker } from "../edit/WeightPicker";
 
@@ -20,7 +20,7 @@ interface ILinkProps {
 export type LinkContent = { type: "link"; props: ILinkProps };
 
 export const Link: FC<ILinkProps & Index> = ({ text, bgcolor, color, weight, href, index }) => (
-  <EditWrapper index={index}>
+  <ContentWrapper index={index}>
     <a
       href={href}
       style={{ backgroundColor: bgcolor, color, fontWeight: weight }}
@@ -28,7 +28,7 @@ export const Link: FC<ILinkProps & Index> = ({ text, bgcolor, color, weight, hre
     >
       {text}
     </a>
-  </EditWrapper>
+  </ContentWrapper>
 );
 
 export const EditLink: FC = () => {

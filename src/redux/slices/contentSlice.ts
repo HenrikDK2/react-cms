@@ -4,12 +4,13 @@ import { HeadingContent } from "../../components/content/Heading";
 import { LinkContent } from "../../components/content/Link";
 import { CardListContent } from "../../components/content/CardList";
 import { Content, ContentState, DragItem } from "../../types";
+import { MarkdownContent } from "../../components/content/Markdown";
 
-const stateInStorage = (): ContentState | undefined => {
-  const strData = sessionStorage.getItem("contentState");
-  if (strData) {
-    return JSON.parse(strData) as ContentState;
-  }
+const universalProps = {
+  px: 4,
+  py: 4,
+  mt: 0,
+  mb: 0,
 };
 
 export const defaultCardItem = {
@@ -39,6 +40,21 @@ export const defaultLink: LinkContent = {
 export const defaultHeading: HeadingContent = {
   type: "heading",
   props: { text: "This is a heading", color: "#000", weight: "bold" },
+};
+
+export const defaultMarkdown: MarkdownContent = {
+  type: "markdown",
+  props: {
+    ...universalProps,
+    content: `Hi! I'm your first Markdown file in **StackEdit**. If you want to learn about StackEdit, you can read me. If you want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the **file explorer** on the left corner of the navigation bar.`,
+  },
+};
+
+const stateInStorage = (): ContentState | undefined => {
+  const strData = sessionStorage.getItem("contentState");
+  if (strData) {
+    return JSON.parse(strData) as ContentState;
+  }
 };
 
 const initalState: ContentState = stateInStorage() || {

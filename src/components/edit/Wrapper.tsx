@@ -10,7 +10,7 @@ interface IContainerProps {
   children: any;
 }
 
-export const EditWrapper: FC<IContainerProps> = ({ index, children }) => {
+export const ContentWrapper: FC<IContainerProps> = ({ index, children }) => {
   const { dragItem, data } = useAppSelector((state) => state.content);
   const { adminMode, editContentIndex } = useAppSelector((state) => state.admin);
   const dispatch = useAppDispatch();
@@ -35,7 +35,7 @@ export const EditWrapper: FC<IContainerProps> = ({ index, children }) => {
         onDragLeave={(e) => e.currentTarget.classList.remove("opacity-50", "border-red-500")}
         onDragExit={(e) => e.currentTarget.classList.remove("opacity-50", "border-red-500")}
         onDrop={(e) => e.currentTarget.classList.remove("opacity-50", "border-red-500")}
-        className="relative border-dashed border-2 py-2 border-indigo-500 flex justify-center items-center mb-4 hover:cursor-move"
+        className="relative border-dashed border-2 py-10 border-indigo-500 flex justify-center items-center mb-4 hover:cursor-move"
       >
         {/* Open edit menu */}
 

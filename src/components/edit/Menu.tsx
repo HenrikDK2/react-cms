@@ -1,13 +1,20 @@
 import { KeyboardEvent, FC } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { IoClose, IoList } from "react-icons/io5";
+import { IoClose, IoList, IoLogoMarkdown } from "react-icons/io5";
 import { EditLink } from "../content/Link";
 import { EditHeading } from "../content/Heading";
 import { Content } from "../../types";
 import { closeMenu } from "../../redux/slices/adminSlice";
 import { EditCardList } from "../content/CardList";
 import { BiLink, BiHeading } from "react-icons/bi";
-import { addContent, defaultHeading, defaultLink, defaultCardList } from "../../redux/slices/contentSlice";
+import {
+  addContent,
+  defaultHeading,
+  defaultLink,
+  defaultCardList,
+  defaultMarkdown,
+} from "../../redux/slices/contentSlice";
+import { EditMarkdown } from "../content/Markdown";
 
 interface IRenderProps {
   currentType: Content["type"];
@@ -21,6 +28,8 @@ const RenderEditableContent: FC<IRenderProps> = ({ currentType }) => {
       return <EditHeading />;
     case "cardList":
       return <EditCardList />;
+    case "markdown":
+      return <EditMarkdown />;
     default:
       return null;
   }
@@ -65,6 +74,9 @@ export const EditMenu: FC = () => {
         </button>
         <button>
           <IoList aria-label="Add card list" onClick={() => dispatch(addContent(defaultCardList))} size={40} />
+        </button>
+        <button>
+          <IoLogoMarkdown aria-label="Add markdown" onClick={() => dispatch(addContent(defaultMarkdown))} size={40} />
         </button>
       </aside>
     </>

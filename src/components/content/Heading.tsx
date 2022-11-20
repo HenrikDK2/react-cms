@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { FontWeight, HexColor } from "../../types";
 import { getContent, updateContentWithNewProps } from "../../utils";
 import { ColorPicker } from "../edit/ColorPicker";
-import { EditWrapper } from "../edit/Wrapper";
+import { ContentWrapper } from "../edit/Wrapper";
 import { Input } from "../Input";
 import { WeightPicker } from "../edit/WeightPicker";
 
@@ -18,11 +18,11 @@ interface IHeadingProps {
 export type HeadingContent = { type: "heading"; props: IHeadingProps };
 
 export const Heading: FC<IHeadingProps & Index> = ({ text, index, color, weight }) => (
-  <EditWrapper index={index}>
+  <ContentWrapper index={index}>
     <h2 className="text-center my-4 font-bold text-4xl" style={{ color, fontWeight: weight }}>
       {text}
     </h2>
-  </EditWrapper>
+  </ContentWrapper>
 );
 
 export const EditHeading: FC = () => {

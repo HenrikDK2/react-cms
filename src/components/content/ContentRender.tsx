@@ -3,6 +3,7 @@ import { Link } from "./Link";
 import { Heading } from "./Heading";
 import { useAppSelector } from "../../redux/store";
 import { CardList } from "./CardList";
+import { Markdown } from "./Markdown";
 
 interface ComponentRenderProps {
   children?: React.ReactNode;
@@ -21,6 +22,8 @@ export const ComponentRender: React.FC<ComponentRenderProps> = () => {
             return <Heading index={index} key={index} {...content.props} />;
           case "cardList":
             return <CardList index={index} key={index} {...content.props} />;
+          case "markdown":
+            return <Markdown index={index} key={index} {...content.props} />;
           default:
             return null;
         }
