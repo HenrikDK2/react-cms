@@ -30,10 +30,11 @@ export const defaultCardList: CardListContent = {
 export const defaultLink: LinkContent = {
   type: "link",
   props: {
-    text: "Redirect to google.dk",
+    text: "My portfolio",
     weight: "bold",
-    href: "https://google.dk",
+    href: "https://henrikmundtmilo.dk",
     bgcolor: "#d21b1b",
+    align: "left",
     color: "#fff",
     ...universalProps,
   },
@@ -41,13 +42,19 @@ export const defaultLink: LinkContent = {
 
 export const defaultHeading: HeadingContent = {
   type: "heading",
-  props: { text: "This is a heading", color: "#000", weight: "bold", ...universalProps },
+  props: { ...universalProps, text: "This is my blog post", color: "#000", weight: "bold", align: "center", py: 8 },
 };
 
 export const defaultMarkdown: MarkdownContent = {
   type: "markdown",
   props: {
-    content: `Hi! I'm your first Markdown file in **StackEdit**. If you want to learn about StackEdit, you can read me. If you want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the **file explorer** on the left corner of the navigation bar.`,
+    content: `Hi! I'm the **creator** of this project. I initially wanted to showcase an example of me using Redux Toolkit in my portfolio, but I had to find some kind of **purpose** for the project.
+I got the idea from one of the job interviews I went to. They showed their internal CMS system they used to edit their content, and I basically yoinked it for my portfolio.
+
+![Yup, that's mine](https://media.tenor.com/6xJ4csixkmMAAAAC/claimed-yup-thats-mine.gif)
+
+The design isn't the prettiest, I wish I had my own personal designer, it would make things a lot easier for me. Anyways, I think this concludes this project. It was fun, but other than a small side project, I don't really have the motivation to add more features for now. If you want to see my portfolio, then head over to my website.
+    `,
     ...universalProps,
   },
 };
@@ -60,7 +67,7 @@ const stateInStorage = (): ContentState | undefined => {
 };
 
 const initalState: ContentState = stateInStorage() || {
-  data: [defaultHeading, defaultCardList, defaultLink],
+  data: [defaultHeading, defaultMarkdown, defaultLink],
   dragItem: 1,
 };
 
