@@ -1,20 +1,17 @@
 import { FC } from "react";
-import placeholderImage from "../../images/placeholder.gif";
 import { closeMenu, setEditContentIndex } from "../../redux/slices/adminSlice";
 import { updateContent, deleteContent } from "../../redux/slices/contentSlice";
 import { UniversalContentProps } from "../../types";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { getContent } from "../../utils";
 import { ContentWrapper } from "./Wrapper";
-import { Input } from "../Input";
 import { Textarea } from "../Textarea";
 import { SpacingSliders } from "../edit/SpacingSliders";
 import { defaultCardItem } from "../../data/default";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 export interface CardItem {
-  src?: string;
-  alt: string;
-  text: string;
-  title: string;
+  content: string;
 }
 
 type Index = { index: number };
@@ -30,12 +27,10 @@ export interface CardListContent {
 
 export const CardList: FC<ICardListProps & Index> = ({ items, index }) => (
   <ContentWrapper index={index}>
-    <ul className="flex flex-wrap gap-16 justify-center my-8">
-      {items.map(({ alt, src, title, text }, i) => (
-        <li key={i} className="w-[300px]">
-          <img width={300} height={224} className="block min-h-[224px]" alt={alt} src={src || placeholderImage} />
-          <h3 className="font-bold text-2xl mt-2">{title}</h3>
-          <p>{text}</p>
+    <ul className="grid grid-cols-3 gap-16 my-8">
+      {items.map(({ content }, i) => (
+        <li key={i}>
+          <ReactMarkdown children={content} remarkPlugins={[remarkGfm]} />
         </li>
       ))}
     </ul>
@@ -90,17 +85,12 @@ export const EditCardList: FC = () => {
           {content.props.items.map((item, i) => (
             <li key={i}>
               <h3 className="font-bold text-lg my-2">{i + 1}. Item</h3>
-              <Input
-                id={"title-" + i}
-                value={item.title}
-                label="Title"
-                onChange={(e) => handleOnChange(e, i, "title")}
-              />
               <Textarea
                 id={"text-" + i}
                 label="Content"
-                value={item.text}
-                onChange={(e) => handleOnChange(e, i, "text")}
+                rows={10}
+                value={item.content}
+                onChange={(e) => handleOnChange(e, i, "content")}
               />
             </li>
           ))}

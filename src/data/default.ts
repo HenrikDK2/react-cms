@@ -11,9 +11,11 @@ const universalProps = {
 };
 
 export const defaultCardItem = {
-  alt: "placeholder",
-  text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat, voluptatibus minus odit ad similique exercitationem doloribus!",
-  title: "Example title",
+  content: `![](https://media3.giphy.com/media/ICOgUNjpvO0PC/giphy.gif?cid=ecf05e4798xtlbwnjcci6fkdfc6byvwdhk03bp170mxivnc8&rid=giphy.gif&ct=g)
+
+  ### Title example
+  
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
 };
 
 export const defaultCardList: CardListContent = {
