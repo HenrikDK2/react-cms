@@ -1,36 +1,45 @@
-import { FC } from "react";
+import { CSSProperties, FC } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { FontWeight, HexColor, UniversalContentProps } from "../../types";
+import { HexColor, UniversalContentProps } from "../../types";
 import { getContent, updateContentWithNewProps } from "../../utils";
 import { ColorPicker } from "../edit/ColorPicker";
 import { ContentWrapper } from "./Wrapper";
 import { Input } from "../Input";
 import { WeightPicker } from "../edit/WeightPicker";
 import { SpacingSliders } from "../edit/SpacingSliders";
+import { AlignPicker } from "../edit/AlignPicker";
 
 type Index = { index: number };
 
 type ILinkProps = {
   text: string;
-  weight: FontWeight;
+  weight: CSSProperties["fontWeight"];
   color: HexColor;
   href: string;
   bgcolor: HexColor;
+  align: CSSProperties["textAlign"];
 } & UniversalContentProps;
 
 export type LinkContent = { type: "link"; props: ILinkProps };
 
-export const Link: FC<ILinkProps & Index> = ({ text, bgcolor, color, weight, href, index }) => (
-  <ContentWrapper index={index}>
-    <a
-      href={href}
-      style={{ backgroundColor: bgcolor, color, fontWeight: weight }}
-      className="px-4 py-2 font-bold rounded-lg mx-auto max-w-max block my-2"
-    >
-      {text}
-    </a>
-  </ContentWrapper>
-);
+export const Link: FC<ILinkProps & Index> = ({ text, bgcolor, color, weight, href, align, index }) => {
+  let margin = "0 auto";
+
+  if (align === "left") margin = "0 auto 0 0";
+  if (align === "right") margin = "0 0 0 auto";
+
+  return (
+    <ContentWrapper index={index}>
+      <a
+        href={href}
+        style={{ backgroundColor: bgcolor, color, fontWeight: weight, margin }}
+        className="px-4 py-2 font-bold rounded-lg no-underline max-w-max block my-2"
+      >
+        {text}
+      </a>
+    </ContentWrapper>
+  );
+};
 
 export const EditLink: FC = () => {
   const { data } = useAppSelector((state) => state.content);
@@ -55,6 +64,7 @@ export const EditLink: FC = () => {
         }}
         value={content.props.href}
       />
+      <AlignPicker content={content} />
       <WeightPicker content={content} />
       <ColorPicker
         id="bgcolor"

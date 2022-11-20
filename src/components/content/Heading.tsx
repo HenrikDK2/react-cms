@@ -1,26 +1,28 @@
-import { FC } from "react";
+import { CSSProperties, FC } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { FontWeight, HexColor, UniversalContentProps } from "../../types";
+import { HexColor, UniversalContentProps } from "../../types";
 import { getContent, updateContentWithNewProps } from "../../utils";
 import { ColorPicker } from "../edit/ColorPicker";
 import { ContentWrapper } from "./Wrapper";
 import { Input } from "../Input";
 import { WeightPicker } from "../edit/WeightPicker";
 import { SpacingSliders } from "../edit/SpacingSliders";
+import { AlignPicker } from "../edit/AlignPicker";
 
 type Index = { index: number };
 
 type IHeadingProps = {
   text: string;
   color: HexColor;
-  weight: FontWeight;
+  weight: CSSProperties["fontWeight"];
+  align: CSSProperties["textAlign"];
 } & UniversalContentProps;
 
 export type HeadingContent = { type: "heading"; props: IHeadingProps };
 
-export const Heading: FC<IHeadingProps & Index> = ({ text, index, color, weight }) => (
+export const Heading: FC<IHeadingProps & Index> = ({ text, index, color, weight, align }) => (
   <ContentWrapper index={index}>
-    <h2 className="text-center my-4 font-bold text-4xl" style={{ color, fontWeight: weight }}>
+    <h2 className="text-center font-bold text-4xl" style={{ color, fontWeight: weight, textAlign: align }}>
       {text}
     </h2>
   </ContentWrapper>
@@ -42,6 +44,7 @@ export const EditHeading: FC = () => {
           }}
           value={content.props.text}
         />
+        <AlignPicker content={content} />
         <WeightPicker content={content} />
         <ColorPicker
           id="textcolor"
