@@ -8,7 +8,6 @@ export type Content = LinkContent | HeadingContent | CardListContent | MarkdownC
 export type ContentArr = Array<Content>;
 export type EditContentIndex = number | null;
 export type DragItem = number;
-export type FontWeight = "bold" | "normal";
 export type UniversalContentProps = {
   px: number;
   py: number;
