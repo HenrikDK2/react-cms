@@ -7,15 +7,9 @@ import { Content } from "../../types";
 import { closeMenu } from "../../redux/slices/adminSlice";
 import { EditCardList } from "../content/CardList";
 import { BiLink, BiHeading } from "react-icons/bi";
-import {
-  addContent,
-  defaultHeading,
-  defaultLink,
-  defaultCardList,
-  defaultMarkdown,
-} from "../../redux/slices/contentSlice";
+import { defaultHeading, defaultLink, defaultCardList, defaultMarkdown } from "../../data/default";
 import { EditMarkdown } from "../content/Markdown";
-
+import { addContent } from "../../redux/slices/contentSlice";
 interface IRenderProps {
   currentType: Content["type"];
 }

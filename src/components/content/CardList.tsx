@@ -1,7 +1,7 @@
 import { FC } from "react";
 import placeholderImage from "../../images/placeholder.gif";
 import { closeMenu, setEditContentIndex } from "../../redux/slices/adminSlice";
-import { defaultCardItem, updateContent, deleteContent } from "../../redux/slices/contentSlice";
+import { updateContent, deleteContent } from "../../redux/slices/contentSlice";
 import { UniversalContentProps } from "../../types";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { getContent } from "../../utils";
@@ -9,7 +9,7 @@ import { ContentWrapper } from "./Wrapper";
 import { Input } from "../Input";
 import { Textarea } from "../Textarea";
 import { SpacingSliders } from "../edit/SpacingSliders";
-
+import { defaultCardItem } from "../../data/default";
 export interface CardItem {
   src?: string;
   alt: string;
