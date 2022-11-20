@@ -1,8 +1,7 @@
-import { FC } from "react";
+import { CSSProperties, FC } from "react";
 import { AiOutlineBold } from "react-icons/ai";
 import { BiFont } from "react-icons/bi";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { FontWeight } from "../../types";
 import { updateContentWithNewProps } from "../../utils";
 import { HeadingContent } from "../content/Heading";
 import { LinkContent } from "../content/Link";
@@ -15,7 +14,7 @@ export const WeightPicker: FC<IWeightPickerProps> = ({ content }) => {
   const { editContentIndex } = useAppSelector((state) => state.admin);
   const dispatch = useAppDispatch();
 
-  const handleClick = (weight: FontWeight) => {
+  const handleClick = (weight: CSSProperties["fontWeight"]) => {
     dispatch(updateContentWithNewProps(content, { weight }, editContentIndex));
   };
 
