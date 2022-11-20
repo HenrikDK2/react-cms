@@ -14,4 +14,16 @@
   h4 {
     @apply font-bold text-2xl my-4;
   }
+
+  a {
+    @apply underline text-blue-600 hover:text-blue-800 visited:text-purple-600;
+  }
+
+  p {
+    @apply mb-6;
+  }
+
+  br {
+    @apply mb-6 block;
+  }
 }
