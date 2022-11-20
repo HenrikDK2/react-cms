@@ -4,7 +4,7 @@ import { closeMenu, setEditContentIndex } from "../../redux/slices/adminSlice";
 import { defaultCardItem, updateContent, deleteContent } from "../../redux/slices/contentSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { getContent } from "../../utils";
-import { ContentWrapper } from "../edit/Wrapper";
+import { ContentWrapper } from "./Wrapper";
 import { Input } from "../Input";
 import { Textarea } from "../Textarea";
 

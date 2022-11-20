@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { getContent, updateContentWithNewProps } from "../../utils";
-import { ContentWrapper } from "../edit/Wrapper";
+import { ContentWrapper } from "./Wrapper";
 import { Input } from "../Input";
 import { Textarea } from "../Textarea";
 

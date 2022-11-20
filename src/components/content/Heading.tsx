@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { FontWeight, HexColor } from "../../types";
 import { getContent, updateContentWithNewProps } from "../../utils";
 import { ColorPicker } from "../edit/ColorPicker";
-import { ContentWrapper } from "../edit/Wrapper";
+import { ContentWrapper } from "./Wrapper";
 import { Input } from "../Input";
 import { WeightPicker } from "../edit/WeightPicker";
 
