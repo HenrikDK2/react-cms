@@ -3,13 +3,14 @@ import { closeMenu, setEditContentIndex } from "../../redux/slices/adminSlice";
 import { updateContent, deleteContent } from "../../redux/slices/contentSlice";
 import { UniversalContentProps } from "../../types";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { getContent } from "../../utils";
+import { getContent, updateContentWithNewProps } from "../../utils";
 import { ContentWrapper } from "./Wrapper";
 import { Textarea } from "../Textarea";
 import { SpacingSliders } from "../edit/SpacingSliders";
 import { defaultCardItem } from "../../data/default";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { Input } from "../Input";
 export interface CardItem {
   content: string;
 }
@@ -17,6 +18,7 @@ export interface CardItem {
 type Index = { index: number };
 
 export type ICardListProps = {
+  cols: "2" | "3" | "4";
   items: CardItem[];
 } & UniversalContentProps;
 
@@ -25,12 +27,12 @@ export interface CardListContent {
   props: ICardListProps;
 }
 
-export const CardList: FC<ICardListProps & Index> = ({ items, index }) => (
+export const CardList: FC<ICardListProps & Index> = ({ items, cols, index }) => (
   <ContentWrapper index={index}>
-    <ul className="grid grid-cols-3 gap-16 my-8">
+    <ul className={`grid grid-cols-fill-${cols} gap-16 my-8`}>
       {items.map(({ content }, i) => (
         <li key={i}>
-          <ReactMarkdown children={content} remarkPlugins={[remarkGfm]} />
+          <ReactMarkdown className="markdown-list" children={content} remarkPlugins={[remarkGfm]} />
         </li>
       ))}
     </ul>
@@ -80,6 +82,18 @@ export const EditCardList: FC = () => {
 
     return (
       <>
+        <Input
+          type="range"
+          label={"Columns - " + content.props.cols}
+          id="columns"
+          min={2}
+          max={4}
+          step={1}
+          value={content.props.cols}
+          onChange={(e) => {
+            dispatch(updateContentWithNewProps(content, { cols: e.currentTarget.value }, editContentIndex));
+          }}
+        />
         <SpacingSliders content={content} editContentIndex={editContentIndex} />
         <ul>
           {content.props.items.map((item, i) => (

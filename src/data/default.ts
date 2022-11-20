@@ -1,6 +1,6 @@
 import { HeadingContent } from "../components/content/Heading";
 import { LinkContent } from "../components/content/Link";
-import { CardListContent } from "../components/content/CardList";
+import { CardItem, CardListContent } from "../components/content/CardList";
 import { MarkdownContent } from "../components/content/Markdown";
 
 const universalProps = {
@@ -10,7 +10,7 @@ const universalProps = {
   mb: 0,
 };
 
-export const defaultCardItem = {
+export const defaultCardItem: CardItem = {
   content: `![](https://media3.giphy.com/media/ICOgUNjpvO0PC/giphy.gif?cid=ecf05e4798xtlbwnjcci6fkdfc6byvwdhk03bp170mxivnc8&rid=giphy.gif&ct=g)
 
   ### Title example
@@ -21,6 +21,7 @@ export const defaultCardItem = {
 export const defaultCardList: CardListContent = {
   type: "cardList",
   props: {
+    cols: "3",
     items: [defaultCardItem, defaultCardItem, defaultCardItem],
     ...universalProps,
   },
