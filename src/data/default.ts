@@ -45,12 +45,12 @@ export const defaultHeading: HeadingContent = {
 export const defaultMarkdown: MarkdownContent = {
   type: "markdown",
   props: {
-    content: `Hi! I'm the **creator** of this project. I initially wanted to showcase an example of me using Redux Toolkit in my portfolio, but I had to find some kind of **purpose** for the project.
-  I got the idea from one of the job interviews I went to. They showed their internal CMS system they used to edit their content, and I basically yoinked it for my portfolio.
+    content: `Hi! I'm the **creator** of this project. I initially wanted to showcase an example of me using Redux Toolkit and HTML Drag and Drop API in my portfolio, but I had to find some kind of **purpose** for the project.
+  I got the idea from one of the job interviews I went to. They showed me their internal CMS system, they used to edit their content, and I basically yoinked the CMS idea for my portfolio.
   
   ![Yup, that's mine](https://media.tenor.com/6xJ4csixkmMAAAAC/claimed-yup-thats-mine.gif)
   
-  The design isn't the prettiest, I wish I had my own personal designer, it would make things a lot easier for me. Anyways, I think this concludes this project. It was fun, but other than a small side project, I don't really have the motivation to add more features for now. If you want to see my portfolio, then head over to my website.
+  The design isn't the prettiest, I wish I had my own personal designer, it would make things a lot easier for me. Anyways, I think this concludes this project. It was fun, but other than a small side project, I don't have the motivation to add more features for now. If you want to see my portfolio, then head over to my website.
       `,
     ...universalProps,
   },
