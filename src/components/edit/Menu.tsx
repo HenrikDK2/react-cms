@@ -1,4 +1,4 @@
-import { KeyboardEvent, FC } from "react";
+import { KeyboardEvent, FC, useState, useRef, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { IoClose, IoList, IoLogoMarkdown } from "react-icons/io5";
 import { EditLink } from "../content/Link";
@@ -37,15 +37,58 @@ export const EditMenu: FC = () => {
     if (e.key === "Escape") dispatch(closeMenu());
   };
 
+  // Resizing
+  const menuRef = useRef<HTMLElement>(null);
+  const resizeRef = useRef<HTMLDivElement>(null);
+  const [isResizing, setIsResizing] = useState<boolean>(false);
+
+  useEffect(() => {
+    if ((menuRef.current, resizeRef.current)) {
+      const menu = menuRef.current;
+      const resize = resizeRef.current;
+      let x: number;
+
+      const mouseMoveHandler = (e: MouseEvent) => {
+        if (x && menu) {
+          const dx = Math.abs(x - e.clientX);
+          const width = menu.clientWidth;
+          let newWidth = x > e.clientX ? width + dx : width - dx;
+          x = e.clientX;
+          menu.style.width = newWidth + "px";
+        }
+      };
+
+      const mouseUpHandler = () => {
+        window.removeEventListener("mousemove", mouseMoveHandler);
+        setIsResizing(false);
+      };
+
+      const mouseDownHandler = (e: MouseEvent) => {
+        x = e.clientX;
+        setIsResizing(true);
+        window.addEventListener("mousemove", mouseMoveHandler);
+        window.addEventListener("mouseup", mouseUpHandler);
+      };
+
+      resize.addEventListener("mousedown", mouseDownHandler);
+      return () => resize.removeEventListener("mousedown", mouseDownHandler);
+    }
+  }, [menuRef, resizeRef]);
+
   return (
     <>
       <aside
+        ref={menuRef}
         aria-hidden={!isOpen}
         onKeyDown={handleKeyDown}
-        className={`fixed overflow-y-scroll pb-4 right-0 top-0 z-10 w-80 h-[100%] transition-all duration-700 bg-white shadow-lg ${
-          isOpen ? "translate-x-0 opacity-100" : "translate-x-[100%] opacity-0"
-        }`}
+        className={`fixed overflow-visible overflow-y-scroll pb-4 right-0 top-0 z-10 w-80 h-[100%] max-w-full min-w-[320px] bg-white shadow-lg  ${
+          !isResizing && "transition-all duration-700"
+        } ${isOpen ? "translate-x-0 opacity-100" : "translate-x-[100%] opacity-0"}`}
       >
+        <div
+          ref={resizeRef}
+          className={`absolute h-full -left-6 top-0 z-40 cursor-ew-resize ${isResizing ? "w-full" : "w-8"}`}
+        />
         <button
           tabIndex={isOpen ? 0 : -1}
           onClick={() => dispatch(closeMenu())}
